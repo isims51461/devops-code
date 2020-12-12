@@ -4,7 +4,7 @@ pipeline {
      maven "M2_HOME"
   }
   environment {
-    registry = "isims51461/pipeline-image"
+    registry = "isims51461/release-01"
     registryCredential = 'docker_registry_creds'
   }
   stages {
@@ -24,17 +24,16 @@ pipeline {
     stage('deploy'){
        steps {
         script {
-          docker.build registry + ":$BUILD_NUMBER"      
+          docker.build registry + ":$BUILD_NUMBER"       
       }
     }
-    stage('Deploy Image') {
-       steps{    script {
-         docker.withRegistry( '', registryCredential ) {
-          dockerImage.push()
+   stage('Deploy Image') {
+       steps{    
+         script {
+           docker.withRegistry( '', registryCredential ) {
+            dockerImage.push()
       }
-    }
+    } 
   }
-}
-    }
-  }
+ }
 }
