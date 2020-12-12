@@ -4,7 +4,7 @@ pipeline {
      maven "M2_HOME"
   }
   environment {
-    registry = "isims51461/release-01"
+    registry = "isims51461/pipeline-image"
     registryCredential = 'docker_registry_creds'
   }
   stages {
