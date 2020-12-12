@@ -25,9 +25,18 @@ pipeline {
       steps {
         script {
           docker.build registry + ":$BUILD_NUMBER"
-           dockerImage.push + ":$BUILD_NUMBER"
       }
     }
     }
   }
 }
+    stage('Deploy Image') {
+      steps{    script {
+        docker.withRegistry( 'isims51461/release-01', registryCredential ) {
+          dockerImage.push(":$BUILD_NUMBER")
+   }
+    }
+    }
+  }
+}          
+          
