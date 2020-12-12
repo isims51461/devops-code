@@ -5,7 +5,7 @@ pipeline {
   }
   environment {
     registry = "isims51461/release-01"
-    registryCredential = 'dockerUSERID'
+    registryCredential = 'docker_registry_creds'
   }
   stages {
      stage('Build'){
