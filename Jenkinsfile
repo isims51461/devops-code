@@ -5,7 +5,7 @@ pipeline {
   }
   environment {
     registry = "isims51461/release-01"
-    registryCredential = 'docker_registry_creds'
+    registryCredential = 'dockerUSERID'
   }
   stages {
      stage('Build'){
@@ -22,19 +22,6 @@ pipeline {
        }
      }
     stage('deploy'){
-      steps {
+       steps {
         script {
           docker.build registry + ":$BUILD_NUMBER"
-      }
-    }
-    }
-  }
-}
-    stage('Deploy Image') {
-      steps{    script {
-        docker.withRegistry( 'isims51461/release-01', registryCredential ) {
-          dockerImage.push(":$BUILD_NUMBER")
-   }
-    }
-    }
-  }
