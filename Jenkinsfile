@@ -1,1 +1,1 @@
-ansiblePlaybook(credentialsId: 'ansible_user2', inventory: '/etc/ansible/hosts', playbook: '/etc/ansible/test.yml')
+ansiblePlaybook become: true, credentialsId: 'ansible_user_2', disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts', playbook: 'test.yml', sudo: true
